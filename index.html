@@ -725,52 +725,46 @@ function simulerPaiement(){
 
 
 function remplirDonneesTest() {
-  // Identité
-  document.getElementById('nom').value = 'FILLAUD';
+  // Identité fictive
+  document.getElementById('nom').value = 'MARTIN';
   document.getElementById('nom_usage').value = '';
-  document.getElementById('prenom').value = 'Josua Barry Freddie';
-  document.getElementById('ddn_j').value = '05';
-  document.getElementById('ddn_m').value = '06';
-  document.getElementById('ddn_a').value = '1986';
-  document.getElementById('lieu_naissance').value = 'Saint-Georges-de-Didonne (17)';
-  document.getElementById('adresse1').value = '15 allée des Acacias';
-  document.getElementById('adresse2').value = '31700 BEAUZELLE, France';
+  document.getElementById('prenom').value = 'Sophie Claire';
+  document.getElementById('ddn_j').value = '14';
+  document.getElementById('ddn_m').value = '03';
+  document.getElementById('ddn_a').value = '1979';
+  document.getElementById('lieu_naissance').value = 'Lyon (69)';
+  document.getElementById('adresse1').value = '8 rue des Lilas';
+  document.getElementById('adresse2').value = '69006 LYON, France';
 
   // Nature : compte bancaire
   document.querySelector('input[name="nature"][value="bancaire"]').checked = true;
   switchNature('bancaire');
 
-  // Compte bancaire
-  document.getElementById('iban').value = 'BE65 9052 7377 2096';
-  document.querySelector('input[name="carac"][value="autre"]').checked = true;
-  document.getElementById('a14').value = 'Compte de paiement en ligne (EUR) — BIC: TRWIBEB1XXX';
-  document.getElementById('ouv_j').value = '07';
-  document.getElementById('ouv_m').value = '02';
-  document.getElementById('ouv_a').value = '2025';
+  // Compte bancaire fictif (Revolut Lituanie)
+  document.getElementById('iban').value = 'LT12 3250 0657 8901 2345';
+  document.querySelector('input[name="carac"][value="courant"]').checked = true;
+  document.getElementById('ouv_j').value = '12';
+  document.getElementById('ouv_m').value = '09';
+  document.getElementById('ouv_a').value = '2023';
   document.getElementById('clo_j').value = '';
   document.getElementById('clo_m').value = '';
   document.getElementById('clo_a').value = '';
-  document.getElementById('banque_nom').value = 'Wise (anciennement TransferWise)';
-  document.getElementById('banque_adresse1').value = 'Rue du Trône 100, 3rd floor';
-  document.getElementById('a23').value = '1050 Brussels, Belgium';
+  document.getElementById('banque_nom').value = 'Revolut Bank UAB';
+  document.getElementById('banque_adresse1').value = 'Konstitucijos ave. 21B';
+  document.getElementById('a23').value = '09306 Vilnius, Lithuania';
   document.querySelector('input[name="detention"][value="propre"]').checked = true;
 
-  // Usage mixte
-  document.querySelector('input[name="usage"][value="mixte"]').checked = true;
-  togglePro(true);
-  document.getElementById('pro_nom').value = 'FILLAUD Josua Barry Freddie';
-  document.getElementById('pro_forme').value = '01';
-  document.getElementById('pro_siret').value = '87977427100024';
-  document.getElementById('pro_adresse1').value = '15 allée des Acacias';
-  document.getElementById('pro_adresse2').value = '31700 BEAUZELLE, France';
+  // Usage personnel uniquement
+  document.querySelector('input[name="usage"][value="perso"]').checked = true;
+  togglePro(false);
 
   // Signature
-  document.getElementById('fait_a').value = 'BEAUZELLE';
-  document.getElementById('fait_le').value = '27/04/2026';
-  document.getElementById('a84').value = 'FILLAUD Josua Barry Freddie';
+  document.getElementById('fait_a').value = 'LYON';
+  document.getElementById('fait_le').value = '28/04/2026';
+  document.getElementById('a84').value = 'MARTIN Sophie Claire';
 
-  // Afficher carac-autre
-  document.getElementById('carac-autre').classList.add('show');
+  // Masquer carac-autre si visible
+  document.getElementById('carac-autre').classList.remove('show');
 
   updateProgress();
   alert('✅ Données de test chargées !');
