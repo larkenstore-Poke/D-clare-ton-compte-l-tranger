@@ -135,6 +135,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.3);text-align:center;font-
   </div>
 </div>
 
+<div style="text-align:right;margin-bottom:12px;">
+  <button onclick="remplirDonneesTest()" style="background:none;border:1.5px dashed #c9a84c;color:#c9a84c;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;">
+    🧪 Remplir avec données de test
+  </button>
+</div>
+
 <!-- ═══ SECTION 1 : IDENTITÉ ═══ -->
 <div class="section">
   <div class="section-header">
@@ -717,8 +723,62 @@ function simulerPaiement(){
   window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
 }
 
+
+function remplirDonneesTest() {
+  // Identité
+  document.getElementById('nom').value = 'FILLAUD';
+  document.getElementById('nom_usage').value = '';
+  document.getElementById('prenom').value = 'Josua Barry Freddie';
+  document.getElementById('ddn_j').value = '05';
+  document.getElementById('ddn_m').value = '06';
+  document.getElementById('ddn_a').value = '1986';
+  document.getElementById('lieu_naissance').value = 'Saint-Georges-de-Didonne (17)';
+  document.getElementById('adresse1').value = '15 allée des Acacias';
+  document.getElementById('adresse2').value = '31700 BEAUZELLE, France';
+
+  // Nature : compte bancaire
+  document.querySelector('input[name="nature"][value="bancaire"]').checked = true;
+  switchNature('bancaire');
+
+  // Compte bancaire
+  document.getElementById('iban').value = 'BE65 9052 7377 2096';
+  document.querySelector('input[name="carac"][value="autre"]').checked = true;
+  document.getElementById('a14').value = 'Compte de paiement en ligne (EUR) — BIC: TRWIBEB1XXX';
+  document.getElementById('ouv_j').value = '07';
+  document.getElementById('ouv_m').value = '02';
+  document.getElementById('ouv_a').value = '2025';
+  document.getElementById('clo_j').value = '';
+  document.getElementById('clo_m').value = '';
+  document.getElementById('clo_a').value = '';
+  document.getElementById('banque_nom').value = 'Wise (anciennement TransferWise)';
+  document.getElementById('banque_adresse1').value = 'Rue du Trône 100, 3rd floor';
+  document.getElementById('a23').value = '1050 Brussels, Belgium';
+  document.querySelector('input[name="detention"][value="propre"]').checked = true;
+
+  // Usage mixte
+  document.querySelector('input[name="usage"][value="mixte"]').checked = true;
+  togglePro(true);
+  document.getElementById('pro_nom').value = 'FILLAUD Josua Barry Freddie';
+  document.getElementById('pro_forme').value = '01';
+  document.getElementById('pro_siret').value = '87977427100024';
+  document.getElementById('pro_adresse1').value = '15 allée des Acacias';
+  document.getElementById('pro_adresse2').value = '31700 BEAUZELLE, France';
+
+  // Signature
+  document.getElementById('fait_a').value = 'BEAUZELLE';
+  document.getElementById('fait_le').value = '27/04/2026';
+  document.getElementById('a84').value = 'FILLAUD Josua Barry Freddie';
+
+  // Afficher carac-autre
+  document.getElementById('carac-autre').classList.add('show');
+
+  updateProgress();
+  alert('✅ Données de test chargées !');
+}
+
 // Exposition globale des fonctions
 window.validerEtPayer = validerEtPayer;
+window.remplirDonneesTest = remplirDonneesTest;
 window.fermerPaywall = fermerPaywall;
 window.simulerPaiement = simulerPaiement;
 window.downloadPDF = downloadPDF;
